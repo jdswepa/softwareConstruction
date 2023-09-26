@@ -18,7 +18,8 @@ public class Sensordataprocessor {
 public double[][][] data;
 public double[][] limit;
 // constructor
-public DataProcessor(double[][][] data, double[][] limit) {
+//constructer name need to be tha same as the class name 
+public Sensordataprocessor(double[][][] data, double[][] limit) {
 this.data = data;
 this.limit = limit;
 }
