@@ -24,14 +24,16 @@ this.data = data;
 this.limit = limit;
 }
 // calculates average of sensor data
-private double average(double[] array) {
-int i = 0;
-double val = 0;
-for (i = 0; i < array.length; i++) {
-val += array[i];
+//chainge method name (make it more discribtive)
+//redeuse unneccery variables 
+private double calculateAverage(double[] array) {
+    double sum = 0;
+    for (double value : array) {
+        sum += value;
+    }
+    return sum / array.length;
 }
-return val / array.length;
-}
+
 // calculate data
 public void calculate(double d) {
 int i, j, k = 0;
@@ -46,7 +48,7 @@ for (j = 0; j < data[0].length; j++) {
 for (k = 0; k < data[0][0].length; k++) {
 data2[i][j][k] = data[i][j][k] / d -
 Math.pow(limit[i][j], 2.0);
-if (average(data2[i][j]) > 10 && average(data2[i][j])
+if (calculateAverage(data2[i][j]) > 10 && calculateAverage(data2[i][j])
 < 50)
 break;
 else if (Math.max(data[i][j][k], data2[i][j][k]) >
@@ -54,7 +56,7 @@ data[i][j][k])
 break;
 else if (Math.pow(Math.abs(data[i][j][k]), 3) <
 Math.pow(Math.abs(data2[i][j][k]), 3)
-&& average(data[i][j]) < data2[i][j][k] && (i + 1)
+&& calculateAverage(data[i][j]) < data2[i][j][k] && (i + 1)
 * (j + 1) > 0)
 data2[i][j][k] *= 2;
 else
